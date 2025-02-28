@@ -15,10 +15,10 @@
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <a href="#" class="text-lg/6 font-semibold text-white">Home</a>
-        <a href="#" class="text-lg/6 font-semibold text-white">About</a>
-        <a href="#" class="text-lg/6 font-semibold text-white">Services</a>
-        <a href="#" class="text-lg/6 font-semibold text-white">Contact</a>
+        <a routerLink="/" class="text-lg/6 font-semibold text-white">Home</a>
+        <a routerLink="/about" class="text-lg/6 font-semibold text-white">About</a>
+        <a routerLink="/services" class="text-lg/6 font-semibold text-white">Services</a>
+        <a routerLink="/contact" class="text-lg/6 font-semibold text-white">Contact</a>
       </div>
     </nav>
     <div *ngIf="isMenuOpen" class="lg:hidden fixed inset-0 z-50 bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -36,10 +36,10 @@
       </div>
   
       <div class="mt-6 flex flex-col items-center">
-        <a href="#" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Home</a>
-        <a href="#" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">About</a>
-        <a href="#" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Services</a>
-        <a href="#" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Contact</a>
+        <a routerLink="/" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Home</a>
+        <a routerLink="/about" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">About</a>
+        <a routerLink="/services" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Services</a>
+        <a routerLink="/contact" class="block py-2 text-lg font-semibold text-gray-900 hover:bg-gray-100">Contact</a>
       </div>
     </div>
   </header>
