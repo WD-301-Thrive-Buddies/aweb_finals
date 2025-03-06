@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterLink } from '@angular/router';
+import { CountUpModule } from 'ngx-countup';
+import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink],
+  imports: [NavbarComponent, FooterComponent, RouterLink, CountUpModule, NgFor],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -36,6 +39,12 @@ export class HomeComponent {
       name: "Emily Brown",
       role: "Client"
     }
+  ];
+
+  statistics = [
+    { title: 'Lives Transformed', count: 60 },
+    { title: 'Expert Caregivers', count: 20 },
+    { title: 'Years of Service', count: 4 }
   ];
 
   currentIndex = 0;
