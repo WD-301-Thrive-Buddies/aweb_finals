@@ -28,3 +28,13 @@
   - @angular/forms - Forms handling
   - ngx-toastr - Notifications
   - FontAwesome - Icons
+
+### 👥 Contributors
+| Roles | Names |Links |
+|-|-|-|
+| Frontend Developer | Usi Jr. Michael M. | [@mikejr](https://github.com/mikejr) |
+| Frontend Developer & Backend Developer | Levin Mallari | [@ldmallari](https://github.com/ldmallari) |
+| Mockups & UI/UX Developer | Santos, Gian Martin | [@Eiki23](https://github.com/Eiki23) |
+| Researcher | Cuenco, Mico Eldrige | [@Mico359](https://github.com/Mico359) |
+
+
