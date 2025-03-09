@@ -11,9 +11,8 @@
 - *HTML5 & CSS3* - Page structure and styling
 
 ### 🎨 UI & Styling
-- *[Tailwind CSS](https://tailwindcss.com/)* (if used) - Utility-first CSS framework
+- *[Tailwind CSS](https://tailwindcss.com/)* - Utility-first CSS framework
 - *[ngx-owl-carousel-o](https://www.npmjs.com/package/ngx-owl-carousel-o)* - Carousel component for Angular
-- *SCSS/SASS* (if used) - Enhanced styling capabilities
 
 ### 📦 Dependencies & Libraries
 - *[@angular/animations]* - Animation support for Angular
