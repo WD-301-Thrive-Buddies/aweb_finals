@@ -1,40 +1,35 @@
 ## 📌 Technologies & Tools Used
 
-### 🚀 Applications
-- [Angular](https://angular.io/) - Frontend framework
-- [Tailwind CSS](https://tailwindcss.com/) - Styling framework
-- [Node.js](https://nodejs.org/) - Backend runtime
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express.js](https://expressjs.com/) - Backend framework
+### 🚀 Frameworks & Applications
+- [Angular 17](https://angular.io/) - Frontend framework
+- [RxJS](https://rxjs.dev/) - Reactive programming library
+- [Zone.js](https://github.com/angular/angular/tree/main/packages/zone.js) - Angular's change detection system
 
 ### 🛠 Languages
-- *TypeScript* - Main language for Angular
-- *JavaScript* - Used for client-side scripting
-- *HTML5* - Structuring web pages
-- *CSS3* - Styling the application
+- *TypeScript* - Core language for Angular
+- *JavaScript (ES6+)* - Additional scripting
+- *HTML5 & CSS3* - Page structure and styling
 
-### 📦 Components & Libraries
-- *Angular Components*
-  - NavbarComponent - Navigation bar
-  - FooterComponent - Footer section
-  - HomeComponent - Landing/Home page
-  - AboutComponent - About Us page
-  - ServicesComponent - Services page
-  - ServicesComponent - Contact Us page
+### 🎨 UI & Styling
+- *[Tailwind CSS](https://tailwindcss.com/)* (if used) - Utility-first CSS framework
+- *[ngx-owl-carousel-o](https://www.npmjs.com/package/ngx-owl-carousel-o)* - Carousel component for Angular
+- *SCSS/SASS* (if used) - Enhanced styling capabilities
 
-- *Third-Party Libraries*
-  - ngx-countup - Animated number counters
-  - @angular/router - Routing system
-  - @angular/forms - Forms handling
-  - ngx-toastr - Notifications
-  - FontAwesome - Icons
+### 📦 Dependencies & Libraries
+- *[@angular/animations]* - Animation support for Angular
+- *[@angular/forms]* - Form handling and validation
+- *[@angular/router]* - Client-side routing
+- *[ngx-countup](https://www.npmjs.com/package/ngx-countup)* - Animated number counters
+- *[ngx-owl-carousel-o](https://www.npmjs.com/package/ngx-owl-carousel-o)* - Carousel slider for testimonials and features
+
+### 📌 Other Utilities
+- *[Tslib](https://www.npmjs.com/package/tslib)* - TypeScript runtime library
+- *[Zone.js](https://www.npmjs.com/package/zone.js)* - Angular's async tracking system
 
 ### 👥 Contributors
-| Roles | Names |Links |
+| Roles | Names | Links |
 |-|-|-|
 | Frontend Developer | Usi Jr. Michael M. | [@mikejr](https://github.com/mikejr) |
-| Frontend Developer & Backend Developer | Levin Mallari | [@ldmallari](https://github.com/ldmallari) |
+| Frontend Developer & Backend Developer | Mallari, Levin | [@ldmallari](https://github.com/ldmallari) |
 | Mockups & UI/UX Developer | Santos, Gian Martin | [@Eiki23](https://github.com/Eiki23) |
 | Researcher | Cuenco, Mico Eldrige | [@Mico359](https://github.com/Mico359) |
-
-
