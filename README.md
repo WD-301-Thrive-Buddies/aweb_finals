@@ -28,7 +28,7 @@
 ### 👥 Contributors
 | Roles | Names | Links |
 |-|-|-|
-| Frontend Developer | Usi Jr. Michael M. | [@mikejr](https://github.com/mikejr) |
+| Frontend Developer | Usi Jr. Michael M. | [@githubbato](https://github.com/githubbato) |
 | Frontend Developer & Backend Developer | Mallari, Levin | [@ldmallari](https://github.com/ldmallari) |
 | Mockups & UI/UX Developer | Santos, Gian Martin | [@Eiki23](https://github.com/Eiki23) |
 | Researcher | Cuenco, Mico Eldrige | [@Mico359](https://github.com/Mico359) |
