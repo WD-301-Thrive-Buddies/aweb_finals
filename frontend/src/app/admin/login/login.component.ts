@@ -15,7 +15,7 @@ export class LoginComponent {
   username: string = "";
   password: string = "";
   errorMessage: string = "";
-  private apiUrl = "http://localhost:5000/login";
+  private apiUrl = "https://sjhc-api.onrender.com/login";
 
   constructor(private http: HttpClient, private router: Router) {}
 
