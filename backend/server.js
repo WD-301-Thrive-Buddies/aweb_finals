@@ -103,12 +103,25 @@ app.delete("/testimonials", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username, password });
+  if (!database) return res.status(500).json({ error: "Database not connected" });
 
-  if (user) {
+  try {
+    const user = await database.collection("users").findOne({
+      username: req.body.username
+    });
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: "User not found" });
+    }
+
+    if (user.password !== req.body.password) {
+      return res.status(401).json({ success: false, message: "Invalid password" });
+    }
+
     res.json({ success: true, message: "Login successful", user });
-  } else {
-    res.status(401).json({ success: false, message: "Invalid credentials" });
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
+
