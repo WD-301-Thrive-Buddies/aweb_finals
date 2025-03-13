@@ -2,6 +2,7 @@ import Express from "express";
 import { MongoClient as Mongoclient } from "mongodb";
 import cors from "cors";
 import multer from "multer";
+const port = process.env.PORT || 4000;
 
 var app = Express();
 app.use(cors());
@@ -26,7 +27,7 @@ async function connectDB() {
 }
 
 connectDB().then(() => {
-  app.listen(() => {
+  app.listen(port, () => {
     console.log("Server Running!");
   });
 });
