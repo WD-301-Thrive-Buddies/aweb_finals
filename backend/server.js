@@ -26,8 +26,8 @@ async function connectDB() {
 }
 
 connectDB().then(() => {
-  app.listen(5038, () => {
-    console.log("Server running on http://localhost:5038");
+  app.listen(() => {
+    console.log("Server Running!");
   });
 });
 
