@@ -1,6 +1,5 @@
 import Express from "express";
 import { MongoClient as Mongoclient } from "mongodb";
-import mongoose from "mongoose";
 import cors from "cors";
 import multer from "multer";
 
@@ -29,12 +28,6 @@ var CONNECTION_STRING = process.env.DB_URL;
 var DATABASENAME = "homecare";
 
 var database;
-
-const UserSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-});
-const User = mongoose.model("User", UserSchema);
 
 async function connectDB() {
   try {
