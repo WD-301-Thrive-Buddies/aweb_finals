@@ -1,5 +1,5 @@
 import Express from "express";
-import { MongoClient as Mongoclient } from "mongodb";
+import { MongoClient } from "mongodb";
 import cors from "cors";
 import multer from "multer";
 
@@ -15,14 +15,6 @@ app.use(cors({
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization"
 }));
-app.options('*', cors());
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://sjhomecare.netlify.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 var CONNECTION_STRING = process.env.DB_URL;
 var DATABASENAME = "homecare";
@@ -31,7 +23,7 @@ var database;
 
 async function connectDB() {
   try {
-    const client = await Mongoclient.connect(CONNECTION_STRING, {
+    const client = await MongoClient.connect(CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
