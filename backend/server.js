@@ -2,16 +2,22 @@ import Express from "express";
 import { MongoClient as Mongoclient } from "mongodb";
 import cors from "cors";
 import multer from "multer";
+
 const port = process.env.PORT || 4000;
 
 var app = Express();
 app.use(cors());
 
-var CONNECTION_STRING =
-  "mongodb+srv://delfinlevin:delfinlevin007@cluster0.0w50x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+var CONNECTION_STRING = process.env.DB_URL;
 var DATABASENAME = "homecare";
 
 var database;
+
+const UserSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
+const User = mongoose.model("User", UserSchema);
 
 async function connectDB() {
   try {
@@ -76,5 +82,16 @@ app.delete("/testimonials", async (req, res) => {
   } catch (error) {
     console.error("Error deleting testimonial:", error);
     res.status(500).json({ error: "Failed to delete testimonial" });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username, password });
+
+  if (user) {
+    res.json({ success: true, message: "Login successful", user });
+  } else {
+    res.status(401).json({ success: false, message: "Invalid credentials" });
   }
 });

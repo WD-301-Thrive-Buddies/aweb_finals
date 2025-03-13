@@ -1,6 +1,6 @@
 import {
   isPlatformBrowser
-} from "./chunk-3DLZV24U.js";
+} from "./chunk-TY3OXON5.js";
 import {
   Directive,
   ElementRef,
@@ -20,7 +20,7 @@ import {
   ɵɵdefineNgModule,
   ɵɵdirectiveInject,
   ɵɵlistener
-} from "./chunk-4KHAKU4F.js";
+} from "./chunk-RVXCVEUG.js";
 
 // node_modules/countup.js/dist/countUp.min.js
 var t = function() {
