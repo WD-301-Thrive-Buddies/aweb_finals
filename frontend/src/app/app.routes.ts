@@ -13,5 +13,5 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'admin/login', component: LoginComponent },
   { path: 'admin/dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
