@@ -7,7 +7,11 @@ import multer from "multer";
 const port = process.env.PORT || 4000;
 
 var app = Express();
-app.use(cors());
+app.use(cors({
+  origin: "https://sjhomecare.netlify.app",
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
 var CONNECTION_STRING = process.env.DB_URL;
 var DATABASENAME = "homecare";
