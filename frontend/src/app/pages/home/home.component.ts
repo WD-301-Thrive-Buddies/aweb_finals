@@ -48,7 +48,7 @@ export class HomeComponent {
     { title: 'Years of Service', count: 4 }
   ];
 
-  readonly APIUrl="http://localhost:5038/testimonials";
+  readonly APIUrl="https://sjhc-api.onrender.com/testimonials";
   
 
   constructor(private http:HttpClient){
