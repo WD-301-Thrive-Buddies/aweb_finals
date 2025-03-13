@@ -1,5 +1,6 @@
 import Express from "express";
 import { MongoClient as Mongoclient } from "mongodb";
+import mongoose from "mongoose";
 import cors from "cors";
 import multer from "multer";
 
