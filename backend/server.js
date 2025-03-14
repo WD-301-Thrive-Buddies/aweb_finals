@@ -68,6 +68,29 @@ app.post("/testimonials", multer().none(), async (req, res) => {
   }
 });
 
+app.put("/testimonials", async (req, res) => {
+  if (!database) return res.status(500).json({ error: "Database not connected" });
+
+  try {
+    const id = req.query.id;
+    const { name, testimonial, image } = req.body;
+
+    const result = await database.collection("testimonials").updateOne(
+      { _id: new ObjectId(id) }, 
+      { $set: { name, testimonial, image } }
+    );
+
+    if (result.modifiedCount === 0) {
+      return res.status(404).json({ error: "Testimonial not found or unchanged" });
+    }
+
+    res.json({ success: true, message: "Updated successfully" });
+  } catch (error) {
+    console.error("Error updating testimonial:", error);
+    res.status(500).json({ error: "Failed to update testimonial" });
+  }
+});
+
 app.delete("/testimonials", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
