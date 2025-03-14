@@ -1,5 +1,5 @@
 <div class="flex flex-col min-h-screen p-6">
-    <header class="bg-white text-white p-4 flex justify-between">
+    <header class="bg-white p-4 flex justify-between">
         <img class="h-12 w-auto" src="../assets/images/logo.png" alt="">
         <h1 class="text-lg font-bold">Admin Dashboard</h1>
         <button (click)="logout()" class="px-4 py-2 bg-transparent border border-red-600 text-red-600 font-semibold rounded-full hover:text-white hover:bg-red-600 transition ease-in-out duration-500">
@@ -18,7 +18,7 @@
   
         <p *ngIf="errorMessage" class="text-red-600 text-sm mb-2">{{ errorMessage }}</p>
   
-        <button (click)="addTestimonial()" class="px-4 py-2 bg-transparent border border-green-600 text-green-600 font-semibold rounded-full hover:text-white hover:bg-green-600 transition ease-in-out duration-500">
+        <button (click)="addTestimonial()" class="mt-4 px-4 py-2 bg-transparent border border-green-600 text-green-600 font-semibold rounded-full hover:text-white hover:bg-green-600 transition ease-in-out duration-500">
           Add Testimonial
         </button>
       </div>
