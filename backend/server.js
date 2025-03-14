@@ -140,7 +140,7 @@ app.get("/contacts", async (req, res) => {
   }
 });
 
-app.post("/contacts", upload.none(), async (req, res) => {
+app.post("/contacts", multer().none(), async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
   const { name, email, message } = req.body;
