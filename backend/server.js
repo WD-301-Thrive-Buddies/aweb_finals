@@ -62,15 +62,7 @@ app.post("/testimonials", multer().none(), async (req, res) => {
   }
 
   try {
-    const numOfDocs = await database.collection("testimonials").countDocuments();
-    
-    await database.collection("testimonials").insertOne({
-      id: (numOfDocs + 1).toString(),
-      name,
-      testimonial,
-      image,
-      role,
-    });
+    await database.collection("testimonials").insertOne({ name, testimonial, image, role });
 
     res.json({ success: true, message: "Testimonial Added Successfully" });
   } catch (error) {
@@ -79,16 +71,20 @@ app.post("/testimonials", multer().none(), async (req, res) => {
   }
 });
 
+const { ObjectId } = require("mongodb");
+
 app.put("/testimonials", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
   try {
     const id = req.query.id;
-    const { name, testimonial, image } = req.body;
+    if (!id) return res.status(400).json({ error: "ID is required" });
+
+    const { name, testimonial, image, role } = req.body;
 
     const result = await database.collection("testimonials").updateOne(
-      { _id: new ObjectId(id) }, 
-      { $set: { name, testimonial, image } }
+      { _id: new ObjectId(id) },
+      { $set: { name, testimonial, image, role } }
     );
 
     if (result.modifiedCount === 0) {
@@ -106,15 +102,18 @@ app.delete("/testimonials", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
   try {
+    const id = req.query.id;
+    if (!id) return res.status(400).json({ error: "ID is required" });
+
     const result = await database.collection("testimonials").deleteOne({
-      id: req.query.id,
+      _id: new ObjectId(id),
     });
 
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: "No matching testimonial found" });
     }
 
-    res.json("Deleted successfully!");
+    res.json({ success: true, message: "Deleted successfully!" });
   } catch (error) {
     console.error("Error deleting testimonial:", error);
     res.status(500).json({ error: "Failed to delete testimonial" });
