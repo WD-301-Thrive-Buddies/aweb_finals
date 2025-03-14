@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
