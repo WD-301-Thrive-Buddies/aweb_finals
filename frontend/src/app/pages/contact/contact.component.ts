@@ -27,7 +27,7 @@ export class ContactComponent {
     this.http.post(this.apiUrl, this.contactForm).subscribe(
       () => {
         alert("Message sent successfully!");
-        this.contactForm = { name: '', email: '', message: '' }; // Reset form
+        this.contactForm = { name: '', email: '', message: '' };
       },
       (error) => console.error("Error sending message:", error)
     );
