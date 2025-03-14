@@ -55,13 +55,24 @@ app.get("/testimonials", async (req, res) => {
 app.post("/testimonials", multer().none(), async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
+  const { name, testimonial, image, role } = req.body;
+
+  if (!name || !testimonial || !image || !role) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
   try {
     const numOfDocs = await database.collection("testimonials").countDocuments();
+    
     await database.collection("testimonials").insertOne({
       id: (numOfDocs + 1).toString(),
-      title: req.body.title,
+      name,
+      testimonial,
+      image,
+      role,
     });
-    res.json("Added Successfully");
+
+    res.json({ success: true, message: "Testimonial Added Successfully" });
   } catch (error) {
     console.error("Error adding testimonial:", error);
     res.status(500).json({ error: "Failed to add testimonial" });
