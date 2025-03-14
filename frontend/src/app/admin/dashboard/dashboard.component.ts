@@ -28,6 +28,7 @@ export class DashboardComponent {
     } else {
       this.user = JSON.parse(storedUser);
       this.fetchTestimonials();
+      this.fetchContacts();
     }
   }
 
