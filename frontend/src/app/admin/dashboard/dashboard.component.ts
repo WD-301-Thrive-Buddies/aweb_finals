@@ -14,10 +14,12 @@ import { FormsModule } from '@angular/forms';
 export class DashboardComponent {
   user: any = null;
   testimonials: any[] = [];
+  contacts: any[] = [];
   newTestimonial = { name: '', testimonial: '', image: '', role: 'Client' };
   editedTestimonial: any = null;
   errorMessage: string = '';
-  private apiUrl = 'https://sjhc-api.onrender.com/testimonials'; 
+  private apiTestimonials = 'https://sjhc-api.onrender.com/testimonials';
+  private apiContact = 'https://sjhc-api.onrender.com/contacts';
 
   constructor(private router: Router, private http: HttpClient) {
     const storedUser = localStorage.getItem("user");
@@ -30,7 +32,7 @@ export class DashboardComponent {
   }
 
   fetchTestimonials() {
-    this.http.get<any[]>(this.apiUrl).subscribe((data) => {
+    this.http.get<any[]>(this.apiTestimonials).subscribe((data) => {
       this.testimonials = data;
     });
   }
@@ -41,7 +43,7 @@ export class DashboardComponent {
       return;
     }
 
-    this.http.post(this.apiUrl, this.newTestimonial).subscribe(
+    this.http.post(this.apiTestimonials, this.newTestimonial).subscribe(
       () => {
         this.fetchTestimonials();
         this.newTestimonial = { name: '', testimonial: '', image: '', role: 'Client' };
@@ -58,7 +60,7 @@ export class DashboardComponent {
   updateTestimonial() {
     if (!this.editedTestimonial) return;
 
-    this.http.put(`${this.apiUrl}?id=${this.editedTestimonial._id}`, this.editedTestimonial).subscribe(
+    this.http.put(`${this.apiTestimonials}?id=${this.editedTestimonial._id}`, this.editedTestimonial).subscribe(
       () => {
         this.fetchTestimonials();
         this.editedTestimonial = null;
@@ -72,12 +74,27 @@ export class DashboardComponent {
   }
 
   deleteTestimonial(id: string) {
-    this.http.delete(`${this.apiUrl}?id=${id}`).subscribe(
+    this.http.delete(`${this.apiTestimonials}?id=${id}`).subscribe(
       () => this.fetchTestimonials(),
       (error) => console.error("Error deleting testimonial:", error)
     );
   }
 
+  // CONTACT
+  fetchContacts() {
+    this.http.get<any[]>(this.apiContact).subscribe((data) => {
+      this.contacts = data;
+    });
+  }
+
+  deleteContact(id: string) {
+    this.http.delete(`${this.apiContact}?id=${id}`).subscribe(
+      () => this.fetchContacts(),
+      (error) => console.error("Error deleting message:", error)
+    );
+  }
+
+  
   logout() {
     localStorage.removeItem("user");
     this.router.navigate(["/admin/login"]);

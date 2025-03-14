@@ -40,6 +40,7 @@ connectDB().then(() => {
   });
 });
 
+// TESTIMONIALS
 app.get("/testimonials", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
@@ -125,6 +126,59 @@ app.delete("/testimonials", async (req, res) => {
     res.status(500).json({ error: "Failed to delete testimonial" });
   }
 });
+
+// CONTACT
+app.get("/contacts", async (req, res) => {
+  if (!database) return res.status(500).json({ error: "Database not connected" });
+
+  try {
+    const messages = await database.collection("contacts").find({}).toArray();
+    res.json(messages);
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    res.status(500).json({ error: "Failed to retrieve messages" });
+  }
+});
+
+app.post("/contacts", upload.none(), async (req, res) => {
+  if (!database) return res.status(500).json({ error: "Database not connected" });
+
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  try {
+    await database.collection("contacts").insertOne({ name, email, message });
+    res.json({ success: true, message: "Message Sent Successfully" });
+  } catch (error) {
+    console.error("Error adding message:", error);
+    res.status(500).json({ error: "Failed to send message" });
+  }
+});
+
+app.delete("/contacts", async (req, res) => {
+  if (!database) return res.status(500).json({ error: "Database not connected" });
+
+  try {
+    const id = req.query.id;
+    if (!id) return res.status(400).json({ error: "ID is required" });
+
+    const result = await database.collection("contacts").deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: "No matching message found" });
+    }
+
+    res.json({ success: true, message: "Message deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    res.status(500).json({ error: "Failed to delete message" });
+  }
+});
+
+// AUTH
 
 app.post("/login", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
