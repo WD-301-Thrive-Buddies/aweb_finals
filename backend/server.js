@@ -1,5 +1,5 @@
 import Express from "express";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import cors from "cors";
 import multer from "multer";
 
@@ -71,8 +71,6 @@ app.post("/testimonials", multer().none(), async (req, res) => {
   }
 });
 
-const { ObjectId } = require("mongodb");
-
 app.put("/testimonials", async (req, res) => {
   if (!database) return res.status(500).json({ error: "Database not connected" });
 
@@ -80,10 +78,18 @@ app.put("/testimonials", async (req, res) => {
     const id = req.query.id;
     if (!id) return res.status(400).json({ error: "ID is required" });
 
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid testimonial ID format" });
+    }
+
     const { name, testimonial, image, role } = req.body;
 
+    if (!name || !testimonial || !image || !role) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
     const result = await database.collection("testimonials").updateOne(
-      { _id: new ObjectId(id) },
+      { _id: new ObjectId(id) }, 
       { $set: { name, testimonial, image, role } }
     );
 
