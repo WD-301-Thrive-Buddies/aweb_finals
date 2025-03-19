@@ -39,6 +39,20 @@ connectDB().then(() => {
     console.log("Server Running!");
   });
 });
+// ARTICLES
+
+app.get("/articles", async (req, res) => {
+  if (!database) return res.status(500).json({ error: "Database not connected" });
+
+  try {
+    const result = await database.collection("articles").find({}).toArray();
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching testimonials:", error);
+    res.status(500).json({ error: "Failed to retrieve testimonials" });
+  }
+});
+
 
 // TESTIMONIALS
 app.get("/testimonials", async (req, res) => {
