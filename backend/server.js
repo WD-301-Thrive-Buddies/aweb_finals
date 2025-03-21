@@ -11,7 +11,7 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: "https://sjhomecare.netlify.app",
+  origin: "*",
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization"
 }));
